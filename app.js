@@ -7,6 +7,7 @@
    dolist.actions = [];
    dolist.contexts = [];
    dolist.projects = [];
+   dolist.newAction = {};
    dolist.productOrder = "name";
    $http.get('/dolist.json').success(function(data){
      dolist.actions  = data.actions;
@@ -22,6 +23,10 @@
   this.listSelected = function(list) {
     return this.curList === list;
   };
+  this.addAction = function(list) {
+    dolist.actions.push(dolist.newAction);
+    dolist.newAction = {};
+  }
   }]);
 })();
 

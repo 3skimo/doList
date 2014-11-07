@@ -13,6 +13,12 @@
   <li ng-class="{active:doList.listSelected(1)}"> <a ng-click="doList.selectList(1)">Projects</a></li>
   <li ng-class="{active:doList.listSelected(2)}"> <a ng-click="doList.selectList(2)">Contexts</a></li>
 </ul>
+  <form ng-submit="doList.addAction()">
+    <textarea ng-model="doList.newAction.description"></textarea>
+    <textarea ng-model="doList.newAction.context"></textarea>
+    <textarea ng-model="doList.newAction.project"></textarea>
+    <input type="submit" value="Submit" />
+  </form>
   <div class="panel" ng-show="doList.listSelected(0)" ng-repeat="action in doList.actions ">
     <h3> {{action.description}} </h3>
     <p> {{action.project}} </p>
