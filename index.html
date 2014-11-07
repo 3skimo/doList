@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="doList">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body ng-controller="DoListController as doList">
+  <h1> doList Manager </h1>
+<ul class="nav nav-tabs" role="tablist">
+  <li ng-class="{active:doList.listSelected(0)}"> <a ng-click="doList.selectList(0)">Actions</a></li>
+  <li ng-class="{active:doList.listSelected(1)}"> <a ng-click="doList.selectList(1)">Projects</a></li>
+  <li ng-class="{active:doList.listSelected(2)}"> <a ng-click="doList.selectList(2)">Contexts</a></li>
+</ul>
+  <div class="panel" ng-show="doList.listSelected(0)" ng-repeat="action in doList.actions ">
+    <h3> {{action.description}} </h3>
+    <p> {{action.project}} </p>
+    <p> {{action.context}} </p>
+  </div>
+  <div class="panel" ng-show="doList.listSelected(1)" ng-repeat="project in doList.projects ">
+    <h3> {{project.name}} </h3>
+  </div>
+  <div class="panel" ng-show="doList.listSelected(2)" ng-repeat="context in doList.contexts ">
+    <h3> {{context.name}} </h3>
+  </div>
+  </body>
+</html>

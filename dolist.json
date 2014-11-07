@@ -1,0 +1,22 @@
+{"actions": [
+    {
+      "description": "Take out trash",
+      "context": "Home",
+      "project": "Errands"
+    },
+    {
+      "description": "Mow lawn",
+      "context": "Home",
+      "project": "Errands"
+    }
+  ],
+  "contexts": [
+    {"name": "home",
+     "type": "place"
+    }
+  ],
+  "projects": [
+    {"name": "Errands"
+    }
+  ]
+}

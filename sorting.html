@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="doList">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="products.js"></script>
+  </head>
+  <body ng-controller="DoListController as dolist">
+    <a href ng-click="dolist.sortProducts('name')"> Name </a>
+    <a href ng-click="dolist.sortProducts('price')"> Price </a>
+    <a href ng-click="dolist.sortProducts('shine')"> Shine </a>
+    <!--  Products Container  -->
+    <div class="list-group">
+      <!--  Product Container  -->
+      <div class="list-group-item" ng-repeat="action in dolist.actions | orderBy: dolist.productOrder">
+        {{action.description}}
+
+
+      </div>
+    </div>
+  </body>
+</html>
