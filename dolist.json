@@ -2,12 +2,14 @@
     {
       "description": "Take out trash",
       "context": "Home",
-      "project": "Errands"
+      "project": "Errands",
+      "dateAdded": 1415433318880
     },
     {
       "description": "Mow lawn",
-      "context": "Home",
-      "project": "Errands"
+      "context": "Garden",
+      "project": "Errands",
+      "dateAdded": 1415433318880
     }
   ],
   "contexts": [
