@@ -57,8 +57,7 @@
 
       }
 
-      returcription":"Trim hedge","context":"Garden","project":"Errands","dateAdded":1415433318880},{"description":"Mow lawn","context":"Garden","project":"Errands","dateAdded":1415433318880}],"context":"teh"}
- sortableEntries;
+      return  sortableEntries;
     }
 
    $http.get('/dolist.json').success(function(data){
