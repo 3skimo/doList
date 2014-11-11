@@ -23,6 +23,9 @@
     <textarea ng-model="doList.newAction.project"></textarea>
     <input type="submit" value="Submit" />
   </form>
+
+   {{ doList.collatedActions }}  
+
   <div class="panel" ng-show="doList.listSelected(0)" ng-repeat="action in doList.actions  | orderBy: doList.actionOrder : doList.actionOrderReverse">
     <h3> {{action.description}} </h3>
     <p> {{action.project}} </p>
