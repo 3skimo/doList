@@ -1,3 +1,6 @@
+.sortHeader {
+ padding: 5px;
+}
 
 .ng-invalid.ng-dirty {
   border-color: #FA737E;
