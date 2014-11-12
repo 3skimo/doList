@@ -97,10 +97,20 @@
     return this.curList === list;
   };
   this.addAction = function(list) {
-    dolist.newAction.dateAdded = Date.now();
+    dolist.newAction.dateAdded = this.keepOnlyDayMonthYearInTimestamp(Date.now());
     dolist.actions.push(dolist.newAction);
     dolist.newAction = {};
-  }
+  };
+
+  this.keepOnlyDayMonthYearInTimestamp = function(timestamp) {
+    date = moment(timestamp);
+    date.milliseconds(0)
+    date.seconds(0)
+    date.minutes(0)
+    date.hours(0)
+    simplifiedTimestamp = date.unix() * 1000;
+    return simplifiedTimestamp;
+  };
   }]);
 })();
 
