@@ -13,6 +13,12 @@
   <li ng-class="{active:doList.listSelected(1)}"> <a ng-click="doList.selectList(1)">Projects</a></li>
   <li ng-class="{active:doList.listSelected(2)}"> <a ng-click="doList.selectList(2)">Contexts</a></li>
 </ul>
+
+Headers:
+    <a href ng-click="doList.setHeader('description')"> Description </a>
+    <a href ng-click="doList.setHeader('dateAdded')"> Date </a>
+    <a href ng-click="doList.setHeader('context')"> Context </a>
+<br>
     <a href ng-click="doList.sortActionsBy('description')"> Description  {{doList.sortDirectionToChar('description')}}</a>
     <a href ng-click="doList.sortActionsBy('dateAdded')"> Date  {{doList.sortDirectionToChar('dateAdded')}}</a>
     <a href ng-click="doList.sortActionsBy('context')"> Context  {{doList.sortDirectionToChar('context')}}</a>
@@ -24,12 +30,13 @@
     <input type="submit" value="Submit" />
   </form>
 
-  <div class="panel" ng-show="doList.listSelected(0)" ng-repeat="actionHeader in doList.collatedActions.keys()">
-    {{actionHeader}}
-</div>
+  <div class="panel" ng-show="doList.listSelected(0)" ng-repeat="actionHeader in doList.collatedHeaders">
+   <div class="panel" >
+    <h3>{{actionHeader}}</h3>
+    </div>
 
-  <div class="panel" ng-show="doList.listSelected(0)" ng-repeat="action in doList.actions  | orderBy: doList.actionOrder : doList.actionOrderReverse">
-    <h3> {{action.description}} </h3>
+  <div class="panel" ng-repeat="action in doList.collatedActions[actionHeader]  | orderBy: doList.actionOrder : doList.actionOrderReverse">
+    <h4> {{action.description}} </h4>
     <p> {{action.project}} </p>
     <p> {{action.context}} </p>
     <p> {{action.dateAdded | date }} </p>
@@ -39,6 +46,7 @@
   </div>
   <div class="panel" ng-show="doList.listSelected(2)" ng-repeat="context in doList.contexts ">
     <h3> {{context.name}} </h3>
-  </div>
+  </div> <!-- End of individual action repeat -->
+</div> <!-- End of collation repeat-->
   </body>
 </html>
