@@ -3,7 +3,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/moment/moment.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body ng-controller="DoListController as doList">
@@ -33,7 +34,7 @@ Headers:
 
   <div class="panel" ng-show="doList.listSelected(0)" ng-repeat="actionHeader in doList.collatedHeaders">
    <div class="panel" >
-    <h3>{{actionHeader}}</h3>
+    <h3>{{doList.displayActionHeader(actionHeader)}}</h3>
     </div>
 
   <div class="panel" ng-repeat="action in doList.collatedActions[actionHeader]  | orderBy: doList.actionOrder : doList.actionOrderReverse">
