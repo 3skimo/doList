@@ -72,6 +72,7 @@
     });
 
    dolist.setHeader = function(headerName) {
+      dolist.currentCollateProperty = headerName;
       dolist.collatedActions = dolist.updateCollatedEntries(headerName);
       dolist.collatedHeaders = dolist.updateCollatedHeaders();
     }
@@ -100,6 +101,7 @@
     dolist.newAction.dateAdded = Date.now();
     dolist.actions.push(dolist.newAction);
     dolist.newAction = {};
+    dolist.setHeader(dolist.currentCollateProperty);
   }
   }]);
 })();
