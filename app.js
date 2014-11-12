@@ -13,6 +13,7 @@
    //Tracks whether ascending or descending order last used for each action
    dolist.actionOrderReverseHistory = {};
   
+   dolist.currentCollateProperty = "context"
 
 
    dolist.sort_by = function(field, reverse, primer){
@@ -24,9 +25,6 @@
          return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
        } 
   };
-  dolist.setHeader = function(headerName) {
-    
-    }
         
 
    this.sortActionsBy = function(category) {
@@ -40,7 +38,7 @@
     this.actionOrder=category;
   };
 
-   dolist.currentCollateProperty = "context"
+
    dolist.updateCollatedEntries = function(collateProperty) {
       sortedList = dolist.actions.sort(dolist.sort_by(collateProperty, false, function(a){return a}));
       sortableEntries = {};
@@ -57,20 +55,27 @@
       return  sortableEntries;
     }
 
+  dolist.updateCollatedHeaders = function(){
+     collatedHeaders = [];
+     for (var key in dolist.collatedActions) {
+         if (key != undefined)
+         collatedHeaders.push(key);
+     }
+     return collatedHeaders;
+}
    $http.get('/dolist.json').success(function(data){
      dolist.actions  = data.actions;
      dolist.contexts  = data.contexts;
      dolist.projects  = data.projects;
      dolist.collatedActions = dolist.updateCollatedEntries(dolist.currentCollateProperty);
-     dolist.collatedHeaders = [];
-     for (var key in dolist.collatedActions) {
-         if (key != undefined)
-         dolist.collatedHeaders.push(key);
-     }
+     dolist.collatedHeaders = dolist.updateCollatedHeaders();
     });
 
+   dolist.setHeader = function(headerName) {
+      dolist.collatedActions = dolist.updateCollatedEntries(headerName);
+      dolist.collatedHeaders = dolist.updateCollatedHeaders();
+    }
 
-   
    dolist.sortActionsBy('dateAdded');
    dolist.sortActionsBy('dateAdded'); //doubled to reverse order, newest first
 

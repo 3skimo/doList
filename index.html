@@ -19,6 +19,7 @@ Headers:
     <a href ng-click="doList.setHeader('dateAdded')"> Date </a>
     <a href ng-click="doList.setHeader('context')"> Context </a>
 <br>
+{{dolist.currentCollateProperty}} 
     <a href ng-click="doList.sortActionsBy('description')"> Description  {{doList.sortDirectionToChar('description')}}</a>
     <a href ng-click="doList.sortActionsBy('dateAdded')"> Date  {{doList.sortDirectionToChar('dateAdded')}}</a>
     <a href ng-click="doList.sortActionsBy('context')"> Context  {{doList.sortDirectionToChar('context')}}</a>
