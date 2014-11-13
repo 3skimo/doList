@@ -8,6 +8,7 @@
    dolist.contexts = [];
    dolist.projects = [];
    dolist.newAction = {};
+   dolist.newAction.completed = false;
 
    dolist.actionOrderReverse = false
    //Tracks whether ascending or descending order last used for each action
@@ -98,7 +99,13 @@
   dolist.displayActionHeader = function(actionHeader) {
    if (dolist.currentCollateProperty == "dateAdded") {
         date = moment(parseInt(actionHeader));
-        return date.toString();
+        return date.format("dddd, MMMM Do YYYY");
+        }
+   if (dolist.currentCollateProperty == "") {
+        return "All";
+    }
+   if (dolist.currentCollateProperty == "completed") {
+        return {true: "Completed", false: "Incomplete"}[actionHeader];
         }
     return actionHeader;
     }
@@ -106,6 +113,10 @@
   dolist.headerSelected = function(headerName) {
      return headerName == dolist.currentCollateProperty;
   }
+
+  dolist.refreshList = function() {
+    dolist.setHeader(dolist.currentCollateProperty);
+    }
 
 //---------------Selecting tabs at the top (old version)-------------
 // the idea was to have completely seperate lists
@@ -122,7 +133,8 @@
     dolist.newAction.dateAdded = this.keepOnlyDayMonthYearInTimestamp(Date.now());
     dolist.actions.push(dolist.newAction);
     dolist.newAction = {};
-    dolist.setHeader(dolist.currentCollateProperty);
+    dolist.newAction.completed = false;
+    dolist.refreshList();
   };
 //---------------Actions & callback -------------
    this.sortActionsBy('dateAdded');

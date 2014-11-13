@@ -10,17 +10,20 @@
   <body ng-controller="DoListController as doList">
   <h1> List Manager </h1>
 <div class="panel">
+<h3> Add item</h3>
   <form ng-submit="doList.addAction()">
-    <textarea ng-model="doList.newAction.description"></textarea>
-    <textarea ng-model="doList.newAction.context"></textarea>
-    <textarea ng-model="doList.newAction.project"></textarea>
+    <textarea placeholder="task..." ng-model="doList.newAction.description"></textarea>
+    <textarea placeholder="context..." ng-model="doList.newAction.context"></textarea>
+    <textarea placeholder="project..." ng-model="doList.newAction.project"></textarea>
+    <input type="checkbox" ng-model="doList.newAction.completed"/>
     <input type="submit" value="Submit" />
   </form>
 </div>
 <ul class="nav nav-tabs" role="tablist">
-  <li ng-class="{active:doList.headerSelected('description')}"> <a ng-click="doList.setHeader('description')">Aggregate</a></li>
+  <li ng-class="{active:doList.headerSelected('')}"> <a ng-click="doList.setHeader('')">Aggregate</a></li>
   <li ng-class="{active:doList.headerSelected('dateAdded')}"> <a ng-click="doList.setHeader('dateAdded')">by Date</a></li>
   <li ng-class="{active:doList.headerSelected('context')}"> <a ng-click="doList.setHeader('context')">by Context</a></li>
+  <li ng-class="{active:doList.headerSelected('completed')}"> <a ng-click="doList.setHeader('completed')">Completed</a></li>
 </ul>
 <!--
     <a href ng-click="doList.sortActionsBy('description')"> Description  {{doList.sortDirectionToChar('description')}}</a>
@@ -28,11 +31,11 @@
     <a href ng-click="doList.sortActionsBy('context')"> Context  {{doList.sortDirectionToChar('context')}}</a>
 -->
 
-  <div class="panel" ng-show="doList.listSelected(0)" ng-repeat="actionHeader in doList.collatedHeaders">
+  <div class="listBox panel" ng-show="doList.listSelected(0)" ng-repeat="actionHeader in doList.collatedHeaders">
     <h3>{{doList.displayActionHeader(actionHeader)}}</h3>
 
     <div class="panel actionBox" ng-repeat="action in doList.collatedActions[actionHeader]  | orderBy: doList.actionOrder : doList.actionOrderReverse">
-      <input type="checkbox" ng-model="action.completed" />
+      <input type="checkbox" ng-model="action.completed" ng-change="doList.refreshList()"/>
       <h4 ng-class="{taskCompleted:action.completed}"> {{action.description}} </h4>
       <p> {{action.dateAdded | date }} </p>
       <p> {{action.project}} </p>

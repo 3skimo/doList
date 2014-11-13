@@ -3,25 +3,29 @@
       "description": "Take out trash",
       "context": "Home",
       "project": "Errands",
-      "dateAdded": 1415433318880
+      "dateAdded": 1415433318880,
+      "completed": false
     },
     {
       "description": "Weed flower beds",
       "context": "Garden",
       "project": "Errands",
-      "dateAdded": 1415433318880
+      "dateAdded": 1415433318880,
+      "completed": false
     },
     {
       "description": "Trim hedge",
       "context": "Garden",
       "project": "Errands",
-      "dateAdded": 1415433318880
+      "dateAdded": 1415433318880,
+      "completed": false
     },
     {
       "description": "Mow lawn",
       "context": "Garden",
       "project": "Errands",
-      "dateAdded": 1415433318880
+      "dateAdded": 1415433318880,
+      "completed": false
     }
   ],
   "contexts": [
