@@ -63,6 +63,7 @@
 //---------------Collated headers-------------
 // I think this could be done with angular: filter directive instead
 // and using a "pattern object"
+// Although.. that might actually be slower, because it will have to run the filter for every category, rather than have it compiled all at once, like here
    dolist.updateCollatedEntries = function(collateProperty) {
       sortedList = dolist.actions.sort(dolist.sort_by(collateProperty, false, function(a){return a}));
       sortableEntries = {};
@@ -94,8 +95,6 @@
       dolist.collatedHeaders = dolist.updateCollatedHeaders();
     }
 
-
-
   dolist.displayActionHeader = function(actionHeader) {
    if (dolist.currentCollateProperty == "dateAdded") {
         date = moment(parseInt(actionHeader));
@@ -103,9 +102,13 @@
         }
     return actionHeader;
     }
+  
+  dolist.headerSelected = function(headerName) {
+     return headerName == dolist.currentCollateProperty;
+  }
 
-
-//---------------Obsolete? -------------
+//---------------Selecting tabs at the top (old version)-------------
+// the idea was to have completely seperate lists
   this.selectList = function(list){
     this.curList = list;
   };

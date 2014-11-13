@@ -1,14 +1,24 @@
-.actionBox p {
-display: inline;
+h3 {
+font-size: 15pt;
+text-decoration: underline;
 }
 
+.actionBox p {
+display: inline;
+margin-left: 7px;
+}
 .actionBox h4 {
 display: inline;
 }
 .actionBox input {
 display: inline;
+margin-right: 10px;
 }
 
+
+.taskCompleted {
+text-decoration: line-through;
+}
 .ng-invalid.ng-dirty {
   border-color: #FA737E;
 }
