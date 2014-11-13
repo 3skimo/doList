@@ -1,5 +1,12 @@
-.sortHeader {
- padding: 5px;
+.actionBox p {
+display: inline;
+}
+
+.actionBox h4 {
+display: inline;
+}
+.actionBox input {
+display: inline;
 }
 
 .ng-invalid.ng-dirty {

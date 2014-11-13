@@ -61,6 +61,8 @@
     };
 
 //---------------Collated headers-------------
+// I think this could be done with angular: filter directive instead
+// and using a "pattern object"
    dolist.updateCollatedEntries = function(collateProperty) {
       sortedList = dolist.actions.sort(dolist.sort_by(collateProperty, false, function(a){return a}));
       sortableEntries = {};
